@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Password Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .password-box {
+      font-size: 20px;
+      font-weight: bold;
+      background: #eee;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      word-wrap: break-word;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #generate {
+      background: #28a745;
+      color: #fff;
+    }
+    #copy {
+      background: #007bff;
+      color: #fff;
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+    }
+    /* Style for ad block */
+    .ad-container {
+      margin: 20px 0;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px dashed #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔑 Random Password Generator</h1>
+    <div class="password-box" id="password">Click "Generate"</div>
+    <button id="generate">Generate Password</button>
+    <button id="copy">Copy to Clipboard</button>
+
+    <!-- 🚀 Google AdSense Placeholder -->
+    <div class="ad-container">
+      <p><strong>Ad will appear here once AdSense is enabled</strong></p>
+      <!-- Replace this block with your AdSense code -->
+      <!-- Example AdSense code Google will give you:
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXX"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+      -->
+    </div>
+
+    <footer>Free tool by Janna</footer>
+  </div>
+
+  <script>
+    function generatePassword(length = 12) {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        password += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return password;
+    }
+
+    document.getElementById("generate").addEventListener("click", () => {
+      const password = generatePassword(16);
+      document.getElementById("password").textContent = password;
+    });
+
+    document.getElementById("copy").addEventListener("click", () => {
+      const password = document.getElementById("password").textContent;
+      navigator.clipboard.writeText(password);
+      alert("Password copied to clipboard!");
+    });
+  </script>
+</body>
+</html>
